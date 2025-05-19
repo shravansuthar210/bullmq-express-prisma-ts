@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+  files      file[]
+}
+
+enum FileStatus {
+  uploaded
+  processing
+  processed
+  failed
+}
+
+model file {
+  id                Int        @id @default(autoincrement())
+  users             user       @relation(fields: [userId], references: [id])
+  userId            Int
+  original_filename String
+  storage_path      String
+  title             String
+  description       String
+  status            FileStatus @default(uploaded)
+  extracted_data    String
+  uploaded_at       DateTime @default(now())
+}
+
+enum JobStatus {
+  queued
+  processing
+  completed
+  failed
+}
+
+model job {
+  id            Int       @id @default(autoincrement())
+  fileId        Int
+  job_type      String
+  status        JobStatus
+  error_message String?
+  started_at    DateTime?
+  completed_at  DateTime?
+}
