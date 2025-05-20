@@ -12,7 +12,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone 
+git clone https://github.com/shravansuthar210/mullmq-express.git
 cd project-name
 ```
 ### 2 install package
