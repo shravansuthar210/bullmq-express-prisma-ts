@@ -15,11 +15,11 @@
 git clone https://github.com/shravansuthar210/bullmq-express-prisma-ts.git
 cd project-name
 ```
-### 2 install package
+### 2 Install package
 ```bash
 npm install
 ```
-### 3 generarte migratation and apply
+### 3 Generate migratation and apply
 ```bash
 npx prisma generate
 npx prisma migrate dev
