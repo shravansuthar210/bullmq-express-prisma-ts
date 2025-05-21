@@ -12,7 +12,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/shravansuthar210/mullmq-express.git
+git clone [https://github.com/shravansuthar210/mullmq-express.git](https://github.com/shravansuthar210/bullmq-express-prisma-ts.git)
 cd project-name
 ```
 ### 2 install package
